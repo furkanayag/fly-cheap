@@ -1,0 +1,22 @@
+package com.pi.flycheap.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Entity
+@Getter
+@Setter
+public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String startPoint;
+    private String endPoint;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private Long price;
+    private Boolean isOneWay;
+}
