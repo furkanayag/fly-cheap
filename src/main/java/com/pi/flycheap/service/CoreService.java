@@ -23,7 +23,7 @@ public class CoreService {
 
     @Scheduled(cron = "0 0,30 * * * *")
     public void checkTickets(){
-        List<Ticket> tickets = ticketRepository.getAll();
+        List<Ticket> tickets = ticketRepository.findAllBy();
         tickets.forEach(ticket -> {
             FlightRequest flightRequest = new FlightRequest(ticket.getStartPoint(), ticket.getEndPoint(), ticket.getStartDate(), ticket.getEndDate());
             List<FlightResponse> flights = skyScanner.getFlights(flightRequest);
