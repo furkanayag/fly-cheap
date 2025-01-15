@@ -25,7 +25,7 @@ public class CoreService {
     public void checkTickets(){
         List<Ticket> tickets = ticketRepository.getAll();
         tickets.forEach(ticket -> {
-            FlightRequest flightRequest = new FlightRequest(ticket.getStartPoint(), ticket.getEndPoint(), ticket.getStartDate(), ticket.getStartDate());
+            FlightRequest flightRequest = new FlightRequest(ticket.getStartPoint(), ticket.getEndPoint(), ticket.getStartDate(), ticket.getEndDate());
             List<FlightResponse> flights = skyScanner.getFlights(flightRequest);
             flights.forEach(flight -> {
                 if (flight.getPrice() < ticket.getPrice()){emailService.sendMail("","","");}
