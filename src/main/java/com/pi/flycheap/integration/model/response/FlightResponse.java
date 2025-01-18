@@ -1,14 +1,14 @@
 package com.pi.flycheap.integration.model.response;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class FlightResponse {
-    private Long price;
+    private Double price;
+    private String airline;
 }

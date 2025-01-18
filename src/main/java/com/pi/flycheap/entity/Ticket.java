@@ -16,10 +16,8 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String startPoint;
-    private String endPoint;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private Long price;
-    private Boolean isOneWay;
+    private String startingPointEntityId;
+    private String endingPointEntityId;
+    private LocalDate date;
+    private Double price;
 }
