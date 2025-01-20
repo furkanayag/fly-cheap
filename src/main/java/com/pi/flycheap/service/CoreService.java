@@ -21,6 +21,9 @@ public class CoreService {
     private final SkyScanner skyScanner;
     private final TicketRepository ticketRepository;
 
+    private static final String mailSubject = "Flight Ticket Found";
+    private static final String mailBody = "Flight is under your expected price: {price}. Fly with {airline}.";
+
     @Scheduled(cron = "0 0,30 * * * *")
     public void checkTickets(){
         List<Ticket> tickets = ticketRepository.findAllBy();
@@ -34,8 +37,11 @@ public class CoreService {
             }
             flights.forEach(flight -> {
                 if (flight.getPrice() < ticket.getPrice()){
-                    System.out.println("Flight is eligible: " + flight.getAirline() + " " + flight.getPrice());
-                    //emailService.sendMail("","","");
+                    log.info("Flight is eligible: {} {}", flight.getAirline(), flight.getPrice());
+                    emailService.sendMail(
+                            "furkan_ayag@outlook.com",
+                            mailSubject,
+                            mailBody.replace("{price}", flight.getPrice().toString()).replace("{airline}", flight.getAirline()));
                 }
             });
         });

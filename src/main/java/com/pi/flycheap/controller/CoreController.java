@@ -17,7 +17,7 @@ public class CoreController {
     private final CoreService coreService;
 
     @GetMapping
-    public void checkTickets(){
+    public void checkTicketsManuel(){
         log.info("Welcome to the Fly Cheap, Enjoy your flight!");
         coreService.checkTickets();
     }
